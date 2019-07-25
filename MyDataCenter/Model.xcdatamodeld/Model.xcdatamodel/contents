@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CoordinateModel" representedClassName="CoordinateModel" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DateInfoModel" representedClassName="DateInfoModel" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="IdentityModel" representedClassName="IdentityModel" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LocationModel" representedClassName="LocationModel" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="coordinates" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoordinateModel" syncable="YES"/>
+        <relationship name="timezone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimezoneModel" syncable="YES"/>
+    </entity>
+    <entity name="LoginInfoModel" representedClassName="LoginInfoModel" syncable="YES">
+        <attribute name="md5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="salt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha256" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NameModel" representedClassName="NameModel" syncable="YES">
+        <attribute name="first" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PictureModel" representedClassName="PictureModel" syncable="YES">
+        <attribute name="large" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="medium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TimezoneModel" representedClassName="TimezoneModel" syncable="YES">
+        <attribute name="locDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="offset" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserModel" representedClassName="UserModel" syncable="YES">
+        <attribute name="cell" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dob" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateInfoModel" syncable="YES"/>
+        <relationship name="id" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IdentityModel" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationModel" syncable="YES"/>
+        <relationship name="login" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginInfoModel" syncable="YES"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NameModel" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PictureModel" syncable="YES"/>
+        <relationship name="registered" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateInfoModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="UserModel" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="NameModel" positionX="-54" positionY="-9" width="128" height="30"/>
+        <element name="LocationModel" positionX="-36" positionY="9" width="128" height="135"/>
+        <element name="PictureModel" positionX="-18" positionY="18" width="128" height="30"/>
+        <element name="IdentityModel" positionX="0" positionY="36" width="128" height="30"/>
+        <element name="DateInfoModel" positionX="9" positionY="45" width="128" height="30"/>
+        <element name="CoordinateModel" positionX="18" positionY="54" width="128" height="30"/>
+        <element name="TimezoneModel" positionX="-36" positionY="0" width="128" height="30"/>
+        <element name="LoginInfoModel" positionX="-9" positionY="27" width="128" height="30"/>
+    </elements>
+</model>

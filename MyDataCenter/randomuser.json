@@ -1,0 +1,219 @@
+{
+  "results": [
+  {
+      "gender": "female",
+      "name": {
+        "title": "miss",
+        "first": "maria",
+        "last": "møller"
+      },
+      "location": {
+        "street": "356 akacievej",
+        "city": "rødvig stevns",
+        "state": "sjælland",
+        "postcode": 56985,
+        "coordinates": {
+          "latitude": "-34.7895",
+          "longitude": "129.9171"
+        },
+        "timezone": {
+          "offset": "+7:00",
+          "description": "Bangkok, Hanoi, Jakarta"
+        }
+      },
+      "email": "maria.møller@example.com",
+      "login": {
+        "uuid": "a94c00bb-8ef4-4c03-b088-270c79d4b684",
+        "username": "lazycat494",
+        "password": "lickit",
+        "salt": "68pUcpDa",
+        "md5": "955ad3c516b7a94615155dd25379092c",
+        "sha1": "be168b5aed9cf994bc6381651442617343dbc1ae",
+        "sha256": "278259c68f4b1d5a1a1e3f9a73b8ea5ff3512aa9d8c40df7c653c476645b7214"
+      },
+      "dob": {
+        "date": "1945-03-27T07:41:50Z",
+        "age": 74
+      },
+      "registered": {
+        "date": "2014-07-16T11:55:25Z",
+        "age": 5
+      },
+      "phone": "58264526",
+      "cell": "35971199",
+      "id": {
+        "name": "CPR",
+        "value": "461055-4630"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/42.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/42.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/42.jpg"
+      },
+      "nat": "DK"
+    },
+  {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "gene",
+        "last": "willis"
+      },
+      "location": {
+        "street": "9336 e little york rd",
+        "city": "tallahassee",
+        "state": "utah",
+        "postcode": 48877,
+        "coordinates": {
+          "latitude": "86.3172",
+          "longitude": "-37.3930"
+        },
+        "timezone": {
+          "offset": "-2:00",
+          "description": "Mid-Atlantic"
+        }
+      },
+      "email": "gene.willis@example.com",
+      "login": {
+        "uuid": "6f6e3ed6-607c-4b4f-ae06-186ec426d350",
+        "username": "angrygorilla161",
+        "password": "testtest",
+        "salt": "zdCYQs0z",
+        "md5": "e26d89eb2e60025e42ec2c807fb8fa7c",
+        "sha1": "c372f23c5aabddee76d68b0958254fe49303e78e",
+        "sha256": "bea9d56f7b73de8916d73923ecdb1a39e4e4ee229bd65ca9f2c56b490a4ded66"
+      },
+      "dob": {
+        "date": "1973-12-31T00:48:44Z",
+        "age": 45
+      },
+      "registered": {
+        "date": "2009-02-26T17:55:21Z",
+        "age": 10
+      },
+      "phone": "(731)-381-3082",
+      "cell": "(154)-373-9149",
+      "id": {
+        "name": "SSN",
+        "value": "044-13-5508"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/93.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/93.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/93.jpg"
+      },
+      "nat": "US"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "rolf",
+        "last": "hegdal"
+      },
+      "location": {
+        "street": "ljan terrasse 346",
+        "city": "vear",
+        "state": "rogaland",
+        "postcode": "3095",
+        "coordinates": {
+          "latitude": "54.8646",
+          "longitude": "-97.3136"
+        },
+        "timezone": {
+          "offset": "-10:00",
+          "description": "Hawaii"
+        }
+      },
+      "email": "rolf.hegdal@example.com",
+      "login": {
+        "uuid": "c4168eac-84b8-46ea-b735-c9da9bfb97fd",
+        "username": "bluefrog786",
+        "password": "ingrid",
+        "salt": "GtRFz4NE",
+        "md5": "5c581c5748fc8c35bd7f16eac9efbb55",
+        "sha1": "c3feb8887abed9ec1561b9aa2c9f58de21d1d3d9",
+        "sha256": "684c478a98b43f1ef1703b35b8bbf61b27dbc93d52acd515e141e97e04447712"
+      },
+      "dob": {
+        "date": "1975-11-12T06:34:44Z",
+        "age": 42
+      },
+      "registered": {
+        "date": "2015-11-04T22:09:36Z",
+        "age": 2
+      },
+      "phone": "66976498",
+      "cell": "40652479",
+      "id": {
+        "name": "FN",
+        "value": "12117533881"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/65.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/65.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/65.jpg"
+      },
+      "nat": "NO"
+    },
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "ryder",
+        "last": "miller"
+      },
+      "location": {
+        "street": "6509 20th ave",
+        "city": "beaumont",
+        "state": "british columbia",
+        "postcode": "S6B 9X3",
+        "coordinates": {
+          "latitude": "-60.2147",
+          "longitude": "-68.6106"
+        },
+        "timezone": {
+          "offset": "+2:00",
+          "description": "Kaliningrad, South Africa"
+        }
+      },
+      "email": "ryder.miller@example.com",
+      "login": {
+        "uuid": "da8a0016-ab83-4393-90d2-b4e0418bde51",
+        "username": "ticklishcat745",
+        "password": "1220",
+        "salt": "OQImmMoZ",
+        "md5": "b1b8d270112fa1ac25a6d7aa5e49d8f2",
+        "sha1": "8f288f722fb643e53012bb2f27d690b1a74de0b6",
+        "sha256": "95dc455e7bfaf5bb0683526138029e3a0275169850ce9d98298733070def3eec"
+      },
+      "dob": {
+        "date": "1960-08-16T10:19:50Z",
+        "age": 58
+      },
+      "registered": {
+        "date": "2016-11-05T13:57:57Z",
+        "age": 2
+      },
+      "phone": "205-789-3156",
+      "cell": "506-740-8186",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/4.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/4.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/4.jpg"
+      },
+      "nat": "CA"
+    }
+  ],
+  "info": {
+    "seed": "2da87e9305069f1d",
+    "results": 1,
+    "page": 1,
+    "version": "1.2"
+  }
+}
+

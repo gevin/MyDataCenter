@@ -1,0 +1,218 @@
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "mrs",
+                "first": "delphine",
+                "last": "harris"
+            },
+            "location": {
+                "street": "1023 stanley way",
+                "city": "enterprise",
+                "state": "prince edward island",
+                "postcode": "I2I 0S3",
+                "coordinates": {
+                    "latitude": "-64.2167",
+                    "longitude": "56.8210"
+                },
+                "timezone": {
+                    "offset": "+8:00",
+                    "description": "Beijing, Perth, Singapore, Hong Kong"
+                }
+            },
+            "email": "delphine.harris@example.com",
+            "login": {
+                "uuid": "567d1d4c-ba6e-4d0c-9b70-5f939b5b119c",
+                "username": "beautifulfrog951",
+                "password": "imperial",
+                "salt": "Pz41cWJS",
+                "md5": "4eeb2414fa4f88b5705fb34e03b4a0a1",
+                "sha1": "c13e0ccdacb272df4d5ec1d0709b4a2c4d23dddb",
+                "sha256": "ab624f17767fef0e6d4b78eb8ff4eaef4ba69bbee030350b2f612e8efb9a9546"
+            },
+            "dob": {
+                "date": "1976-08-18T05:44:23Z",
+                "age": 42
+            },
+            "registered": {
+                "date": "2006-01-14T05:19:28Z",
+                "age": 13
+            },
+            "phone": "637-015-7982",
+            "cell": "939-463-0442",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/56.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/56.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/56.jpg"
+            },
+            "nat": "CA"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "mr",
+                "first": "soham",
+                "last": "wright"
+            },
+            "location": {
+                "street": "9763 w 6th st",
+                "city": "roseburg",
+                "state": "wyoming",
+                "postcode": 94230,
+                "coordinates": {
+                    "latitude": "82.7212",
+                    "longitude": "-158.3596"
+                },
+                "timezone": {
+                    "offset": "+9:30",
+                    "description": "Adelaide, Darwin"
+                }
+            },
+            "email": "soham.wright@example.com",
+            "login": {
+                "uuid": "efefdcfe-9216-448d-8374-9156e2206505",
+                "username": "heavyelephant622",
+                "password": "choochoo",
+                "salt": "JieyrFZq",
+                "md5": "a063952bc655f008b9899b08891b67a8",
+                "sha1": "92eaa652251fc96b89c25a24ef32bfef7ffc062e",
+                "sha256": "7db515c503cc3155be1c5381aa36599e104f6350957d546f93dc0e40d9df9454"
+            },
+            "dob": {
+                "date": "1950-09-06T04:03:11Z",
+                "age": 68
+            },
+            "registered": {
+                "date": "2007-05-15T16:38:56Z",
+                "age": 12
+            },
+            "phone": "(811)-043-0322",
+            "cell": "(335)-225-4719",
+            "id": {
+                "name": "SSN",
+                "value": "988-46-5500"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/37.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/37.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/37.jpg"
+            },
+            "nat": "US"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "mr",
+                "first": "آرمین",
+                "last": "سالاری"
+            },
+            "location": {
+                "street": "4332 راستوان",
+                "city": "اراک",
+                "state": "قم",
+                "postcode": 71360,
+                "coordinates": {
+                    "latitude": "28.5645",
+                    "longitude": "-96.1804"
+                },
+                "timezone": {
+                    "offset": "+7:00",
+                    "description": "Bangkok, Hanoi, Jakarta"
+                }
+            },
+            "email": "آرمین.سالاری@example.com",
+            "login": {
+                "uuid": "14d6509a-ed24-47b1-8b51-efeb35e99ff3",
+                "username": "goldenbutterfly938",
+                "password": "race",
+                "salt": "62hpERhI",
+                "md5": "01af681407ccd4a97501cb3142fad0a8",
+                "sha1": "e139f3566a2660eb83f18832e0c3261777dda712",
+                "sha256": "da5b634f385758c4c0dad357300c7c5569519d87d4e99ae0fd8946cdeda83506"
+            },
+            "dob": {
+                "date": "1996-10-10T02:04:07Z",
+                "age": 22
+            },
+            "registered": {
+                "date": "2016-07-23T15:39:05Z",
+                "age": 3
+            },
+            "phone": "023-95699281",
+            "cell": "0941-070-9993",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/71.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/71.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/71.jpg"
+            },
+            "nat": "IR"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "monsieur",
+                "first": "stefano",
+                "last": "louis"
+            },
+            "location": {
+                "street": "4561 rue des cuirassiers",
+                "city": "jenins",
+                "state": "aargau",
+                "postcode": 8440,
+                "coordinates": {
+                    "latitude": "-50.3864",
+                    "longitude": "-75.6304"
+                },
+                "timezone": {
+                    "offset": "-12:00",
+                    "description": "Eniwetok, Kwajalein"
+                }
+            },
+            "email": "stefano.louis@example.com",
+            "login": {
+                "uuid": "e907b60f-3166-4675-9b50-19c8d60421eb",
+                "username": "goldenbear156",
+                "password": "qqqq",
+                "salt": "neyAzCtI",
+                "md5": "2826cc2f5dcc117bdfcca21c95273845",
+                "sha1": "cdee68a003151ae793d24da0222b1a44a1dde8e7",
+                "sha256": "3017eee187546855c2baf6fc38de66cf542abe8b3108b510cfaf685250f2006d"
+            },
+            "dob": {
+                "date": "1976-08-26T00:20:39Z",
+                "age": 42
+            },
+            "registered": {
+                "date": "2015-03-30T23:40:06Z",
+                "age": 4
+            },
+            "phone": "(402)-108-7726",
+            "cell": "(404)-346-2453",
+            "id": {
+                "name": "AVS",
+                "value": "756.3343.1027.45"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/53.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/53.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/53.jpg"
+            },
+            "nat": "CH"
+        }
+    ],
+    "info": {
+        "seed": "7ae2c22bc930143a",
+        "results": 1,
+        "page": 1,
+        "version": "1.2"
+    }
+}

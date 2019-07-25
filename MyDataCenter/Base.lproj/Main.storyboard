@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,62 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyDataCenter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Mc-TS-zTR">
+                                <rect key="frame" x="0.0" y="144" width="414" height="592"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mo-E9-3Ry">
+                                <rect key="frame" x="20" y="93" width="42" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.90588235289999997" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Query"/>
+                                <connections>
+                                    <action selector="queryClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E3G-Sj-foi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMe-Cb-mNI">
+                                <rect key="frame" x="101" y="93" width="51" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.90588235289999997" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0nI-y6-sJO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4O-nx-05c">
+                                <rect key="frame" x="191" y="93" width="59" height="30"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.90588235289999997" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="AddNew"/>
+                                <connections>
+                                    <action selector="addNewClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L9U-ep-qlg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Mc-TS-zTR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="124" id="3UJ-LW-UJw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Mc-TS-zTR" secondAttribute="trailing" id="DR3-Wn-R2c"/>
+                            <constraint firstItem="3Mc-TS-zTR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gah-Cl-205"/>
+                            <constraint firstItem="jMe-Cb-mNI" firstAttribute="centerY" secondItem="5mo-E9-3Ry" secondAttribute="centerY" id="Gsp-qj-vIY"/>
+                            <constraint firstItem="jMe-Cb-mNI" firstAttribute="leading" secondItem="5mo-E9-3Ry" secondAttribute="trailing" constant="39" id="RCP-s9-HSq"/>
+                            <constraint firstItem="O4O-nx-05c" firstAttribute="leading" secondItem="jMe-Cb-mNI" secondAttribute="trailing" constant="39" id="VA0-Ud-uNA"/>
+                            <constraint firstItem="5mo-E9-3Ry" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dn7-YH-R6t"/>
+                            <constraint firstItem="5mo-E9-3Ry" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="73" id="kh2-Je-9jf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Mc-TS-zTR" secondAttribute="bottom" id="lut-jf-PFm"/>
+                            <constraint firstItem="O4O-nx-05c" firstAttribute="centerY" secondItem="jMe-Cb-mNI" secondAttribute="centerY" id="p9x-Pf-ClG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3Mc-TS-zTR" id="m5l-RX-fDl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="23.64130434782609"/>
         </scene>
     </scenes>
 </document>
