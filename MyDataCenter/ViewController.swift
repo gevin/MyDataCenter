@@ -38,21 +38,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 當 UserModel table 發生新增、修改、刪除 會觸發
     func dataModelChanged(change: ModelChange) {
         let allUser = Repository<UserModel>.fetchAll()
-        self.loadModel(userModels: allUser)
+        self.reloadModel(userModels: allUser)
     }
     
     // MARK: - Action
     
     @IBAction func queryClicked(_ sender: Any) {
         let userList = Repository<UserModel>.fetchAll()
-        self.loadModel(userModels: userList)
+        self.reloadModel(userModels: userList)
     }
     
     @IBAction func updateClicked(_ sender: Any) {
-        let userList1 = Repository<UserModel>.fetch(condition: "userId == 1", limit: 1)
+        let userList1 = Repository<UserModel>.fetch(condition: "userId == 0", limit: 1)
         if userList1.count > 0 {
             let userModel = userList1[0]
             userModel.email = "updateTest@example.com"
+            userModel.dob?.age = Int32(Int.random(in: 0...100))
             // 改完值後，下個 runloop 會自動儲存
         }
     }
@@ -67,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func removeUserModel( userId: String ) {
         Repository<UserModel>.delete(condition: "userId == '\(userId)'", arguments: nil)
         let userList = Repository<UserModel>.fetchAll()
-        self.loadModel(userModels: userList)
+        self.reloadModel(userModels: userList)
     }
     
     // MARK: - Operation
@@ -183,7 +184,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return []
     }
     
-    func loadModel( userModels: [UserModel] ) {
+    func reloadModel( userModels: [UserModel] ) {
         self.cellModels.removeAll()
         for userModel in userModels {
             

@@ -854,7 +854,7 @@ class DataCenter: NSObject {
     
     // MARK: - Delete
 
-    public func delete(_ object: NSManagedObject) {
+    public func delete(_ object: NSManagedObject, cascade: Bool ) {
         let context = self.managedObjectContext
         do {
             // 在 obj-c，若 object 不存在 context，就直接取回 nil，但在 swift 會丟出 exception，要用try catch 接
@@ -863,12 +863,37 @@ class DataCenter: NSObject {
             // print(error)
             return
         }
+        
+        // relationship 也一起刪除
+        if cascade {
+            for (name, relationship) in object.entity.relationshipsByName {
+                guard (relationship.destinationEntity?.name) != nil else { continue }
+                if let collectionSet = object.value(forKey: name) {
+                    if let relationObjects = collectionSet as? Set<NSManagedObject> {
+                        // 先刪除關聯
+                        object.setValue(Set<NSManagedObject>(), forKey: name)
+                        // one-to-many
+                        for obj in relationObjects {
+                            guard obj.objectID.isTemporaryID == true else {continue}
+                            self.deleteWithoutSave(obj)
+                        }
+                    } else if let relationObject = collectionSet as? NSManagedObject {
+                        if relationObject.objectID.isTemporaryID == true {
+                            // 先刪除關聯
+                            object.setValue(nil, forKey: name)
+                            // one-to-one
+                            self.deleteWithoutSave(relationObject)
+                        }
+                    }
+                }
+            }
+        }
 
         context.delete(object)
         self.saveContext()
     }
     
-    public func deleteBatch(_ objects: [NSManagedObject] ) {
+    public func deleteBatch(_ objects: [NSManagedObject], cascade: Bool ) {
         let context = self.managedObjectContext
         for object in objects {
             do {
@@ -878,6 +903,32 @@ class DataCenter: NSObject {
                 // print(error)
                 continue
             }
+            
+            // relationship 也一起刪除
+            if cascade {
+                for (name, relationship) in object.entity.relationshipsByName {
+                    guard (relationship.destinationEntity?.name) != nil else { continue }
+                    if let collectionSet = object.value(forKey: name) {
+                        if let relationObjects = collectionSet as? Set<NSManagedObject> {
+                            // 先刪除關聯
+                            object.setValue(Set<NSManagedObject>(), forKey: name)
+                            // one-to-many
+                            for obj in relationObjects {
+                                guard obj.objectID.isTemporaryID == true else {continue}
+                                self.deleteWithoutSave(obj)
+                            }
+                        } else if let relationObject = collectionSet as? NSManagedObject {
+                            if relationObject.objectID.isTemporaryID == true {
+                                // 先刪除關聯
+                                object.setValue(nil, forKey: name)
+                                // one-to-one
+                                self.deleteWithoutSave(relationObject)
+                            }
+                        }
+                    }
+                }
+            }
+            
             context.delete(object)
         }
         self.saveContext()
