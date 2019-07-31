@@ -523,9 +523,8 @@ class DataCenter: NSObject {
     }
 
     public func insert(_ object: NSManagedObject) {
-        guard object.objectID.isTemporaryID == true else {
-            return
-        }
+        // isTemporaryID == true 表示未存入 DB，才執行 insert
+        guard object.objectID.isTemporaryID == true else { return }
         let context = self.managedObjectContext
 
         for (name, _) in object.entity.relationshipsByName {
@@ -546,10 +545,8 @@ class DataCenter: NSObject {
     }
 
     internal func insertWithoutSave(_ object: NSManagedObject) {
-        // 有 isTemporaryID 表示已經存在 db，就不再 insert
-        guard object.objectID.isTemporaryID == true else {
-            return
-        }
+        // isTemporaryID true 表示不存在 db，才執行 insert
+        guard object.objectID.isTemporaryID == true else { return }
         let context = self.managedObjectContext
 
         for (name, _) in object.entity.relationshipsByName {
@@ -574,9 +571,8 @@ class DataCenter: NSObject {
         }
         let context = self.managedObjectContext
         for object in objectArray {
-            guard object.objectID.isTemporaryID == true else {
-                continue
-            }
+            // isTemporaryID == true 表示未存入 DB
+            guard object.objectID.isTemporaryID == true else { continue }
             for (name, _) in object.entity.relationshipsByName {
                 let value = object.value(forKey: name)
                 if let objects = value as? Set<NSManagedObject> {
@@ -832,7 +828,7 @@ class DataCenter: NSObject {
         
         // 複製 source object 的 relationship 物件
         for (name, relationship) in sourceObject.entity.relationshipsByName {
-            guard let relationType = relationship.destinationEntity?.name else { continue }
+            guard (relationship.destinationEntity?.name) != nil else { continue }
             if let value = sourceObject.value(forKey: name) {
                 if let objects = value as? Set<NSManagedObject> {
                     // one-to-many
@@ -866,27 +862,7 @@ class DataCenter: NSObject {
         
         // relationship 也一起刪除
         if cascade {
-            for (name, relationship) in object.entity.relationshipsByName {
-                guard (relationship.destinationEntity?.name) != nil else { continue }
-                if let collectionSet = object.value(forKey: name) {
-                    if let relationObjects = collectionSet as? Set<NSManagedObject> {
-                        // 先刪除關聯
-                        object.setValue(Set<NSManagedObject>(), forKey: name)
-                        // one-to-many
-                        for obj in relationObjects {
-                            guard obj.objectID.isTemporaryID == true else {continue}
-                            self.deleteWithoutSave(obj)
-                        }
-                    } else if let relationObject = collectionSet as? NSManagedObject {
-                        if relationObject.objectID.isTemporaryID == true {
-                            // 先刪除關聯
-                            object.setValue(nil, forKey: name)
-                            // one-to-one
-                            self.deleteWithoutSave(relationObject)
-                        }
-                    }
-                }
-            }
+            self.deleteRelationship(object: object)
         }
 
         context.delete(object)
@@ -906,62 +882,15 @@ class DataCenter: NSObject {
             
             // relationship 也一起刪除
             if cascade {
-                for (name, relationship) in object.entity.relationshipsByName {
-                    guard (relationship.destinationEntity?.name) != nil else { continue }
-                    if let collectionSet = object.value(forKey: name) {
-                        if let relationObjects = collectionSet as? Set<NSManagedObject> {
-                            // 先刪除關聯
-                            object.setValue(Set<NSManagedObject>(), forKey: name)
-                            // one-to-many
-                            for obj in relationObjects {
-                                guard obj.objectID.isTemporaryID == true else {continue}
-                                self.deleteWithoutSave(obj)
-                            }
-                        } else if let relationObject = collectionSet as? NSManagedObject {
-                            if relationObject.objectID.isTemporaryID == true {
-                                // 先刪除關聯
-                                object.setValue(nil, forKey: name)
-                                // one-to-one
-                                self.deleteWithoutSave(relationObject)
-                            }
-                        }
-                    }
-                }
+                self.deleteRelationship(object: object)
             }
             
             context.delete(object)
         }
         self.saveContext()
     }
-
-    private func deleteWithoutSave(_ object: NSManagedObject) {
-        let context = self.managedObjectContext
-        do {
-            // 在 obj-c，若 object 不存在 context，就直接取回 nil，但在 swift 會丟出 exception，要用try catch 接
-            _ = try context.existingObject(with: object.objectID)
-        } catch {
-            // print(error)
-            return
-        }
-        
-        context.delete(object)
-    }
     
-    private func deleteBatchWithoutSave(_ objects: [NSManagedObject] ) {
-        let context = self.managedObjectContext
-        for object in objects {
-            do {
-                // 在 obj-c，若 object 不存在 context，就直接取回 nil，但在 swift 會丟出 exception，要用try catch 接
-                _ = try context.existingObject(with: object.objectID)
-            } catch {
-                // print(error)
-                continue
-            }
-            context.delete(object)
-        }
-    }
-    
-    public func delete(from tableName: String, condition: String?, arguments: [Any]?) {
+    public func delete(from tableName: String, condition: String?, arguments: [Any]?, cascade: Bool) {
 
         let context = self.managedObjectContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: tableName)
@@ -974,6 +903,11 @@ class DataCenter: NSObject {
             let result = try context.fetch(fetchRequest)
             for i in 0..<result.count {
                 if let object = result[i] as? NSManagedObject {
+                    // delete relationship
+                    if cascade {
+                        self.deleteRelationship(object: object)
+                    }
+                    
                     context.delete(object)
                 }
             }
@@ -983,9 +917,64 @@ class DataCenter: NSObject {
         }
     }
 
-    public func deleteAll(from tableName: String) {
-        self.delete(from: tableName, condition: nil, arguments: nil)
+    public func deleteAll(from tableName: String, cascade: Bool) {
+        self.delete(from: tableName, condition: nil, arguments: nil, cascade: cascade)
     }
+    
+    private func deleteWithoutSave(_ object: NSManagedObject) {
+        let context = self.managedObjectContext
+        // isTemporaryID false 表示存在 db，才執行刪除
+        guard object.objectID.isTemporaryID == false else {return}
+        do {
+            // 在 obj-c，若 object 不存在 context，就直接取回 nil，但在 swift 會丟出 exception，要用try catch 接
+            _ = try context.existingObject(with: object.objectID)
+        } catch {
+            // print(error)
+            return
+        }
+        
+        context.delete(object)
+    }
+    
+    private func deleteBatchWithoutSave(_ objects: Set<NSManagedObject> ) {
+        let context = self.managedObjectContext
+        for object in objects {
+            // isTemporaryID false 表示存在 db，才執行刪除
+            guard object.objectID.isTemporaryID == false else {continue}
+            do {
+                // 在 obj-c，若 object 不存在 context，就直接取回 nil，但在 swift 會丟出 exception，要用try catch 接
+                _ = try context.existingObject(with: object.objectID)
+            } catch {
+                // print(error)
+                continue
+            }
+            context.delete(object)
+        }
+    }
+    
+    private func deleteRelationship( object:NSManagedObject ) {
+        for (name, relationship) in object.entity.relationshipsByName {
+            guard (relationship.destinationEntity?.name) != nil else { continue }
+            guard let value = object.value(forKey: name) else { continue }
+            if let relationObjects = value as? Set<NSManagedObject> {
+                // 先刪除關聯
+                object.setValue(Set<NSManagedObject>(), forKey: name)
+                // one-to-many
+                for relationObject in relationObjects {
+                    self.deleteRelationship(object: relationObject)
+                }
+                self.deleteBatchWithoutSave(relationObjects)
+            } else if let relationObject = value as? NSManagedObject {
+                // 先刪除關聯
+                object.setValue(nil, forKey: name)
+                self.deleteRelationship(object: relationObject)
+                // one-to-one
+                self.deleteWithoutSave(relationObject)
+            }
+        }
+    }
+    
+    
 }
 
 protocol CoreDataEntityName {

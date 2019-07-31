@@ -26,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Repository<UserModel>.deleteAll()
+        Repository<UserModel>.deleteAll(cascade: true)
         
         let userList = self.readJSONFile()
         Repository<UserModel>.insertBatch(objects: userList)
@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc
     func removeUserModel( userId: String ) {
-        Repository<UserModel>.delete(condition: "userId == '\(userId)'", arguments: nil)
+        Repository<UserModel>.delete(condition: "userId == '\(userId)'", arguments: nil, cascade: true)
         let userList = Repository<UserModel>.fetchAll()
         self.reloadModel(userModels: userList)
     }
@@ -135,12 +135,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let userDataList = jsondict["results"] as? [[String:Any]] {
                 let decoder = JSONDecoder()
                 var models: [UserModel] = []
-                var index = 0
                 for userdict in userDataList {
                     let userData = try JSONSerialization.data(withJSONObject: userdict, options: JSONSerialization.WritingOptions.prettyPrinted)
                     let userModel = try decoder.decode(UserModel.self, from: userData)
-                    userModel.userId = "\(index)"
-                    index += 1
                     models.append(userModel)
                 }
                 return models
@@ -168,12 +165,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let userDataList = jsondict["results"] as? [[String:Any]] {
                 let decoder = JSONDecoder()
                 var models: [UserModel] = []
-                var index = 0
                 for userdict in userDataList {
                     let userData = try JSONSerialization.data(withJSONObject: userdict, options: JSONSerialization.WritingOptions.prettyPrinted)
                     let userModel = try decoder.decode(UserModel.self, from: userData)
-                    userModel.userId = "\(index)"
-                    index += 1
                     models.append(userModel)
                 }
                 return models

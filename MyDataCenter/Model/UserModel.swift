@@ -96,6 +96,7 @@ public class UserModel: NSManagedObject, Codable {
     @NSManaged public var picture: PictureModel?
     
     enum CodingKeys: String, CodingKey {
+        case userId
         case gender
         case email
         case phone
@@ -119,6 +120,7 @@ public class UserModel: NSManagedObject, Codable {
         self.init(entity: entity, insertInto: nil)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.userId     = try container.decodeIfPresent( String.self, forKey: .userId     ) ?? UUID().uuidString
         self.gender     = try container.decodeIfPresent( String.self, forKey: .gender     )
         self.email      = try container.decodeIfPresent( String.self, forKey: .email      )
         self.phone      = try container.decodeIfPresent( String.self, forKey: .phone      )

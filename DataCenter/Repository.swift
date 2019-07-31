@@ -75,20 +75,20 @@ class Repository<ModelType: NSManagedObject> {
         DataCenter.shared.insertBatch(objects)
     }
     
-    static func delete(object: ModelType ) {
-        DataCenter.shared.delete(object)
+    static func delete(object: ModelType, cascade: Bool) {
+        DataCenter.shared.delete(object, cascade: cascade)
     }
     
-    static func deleteBatch(objects: [ModelType] ) {
-        DataCenter.shared.deleteBatch(objects)
+    static func deleteBatch(objects: [ModelType], cascade: Bool ) {
+        DataCenter.shared.deleteBatch(objects, cascade: cascade )
     }
     
-    static func delete(condition: String?, arguments: [Any]?) {
-        DataCenter.shared.delete(from: ModelType.entityName, condition: condition, arguments: arguments)
+    static func delete(condition: String?, arguments: [Any]?, cascade: Bool ) {
+        DataCenter.shared.delete(from: ModelType.entityName, condition: condition, arguments: arguments, cascade: cascade)
     }
     
-    static func deleteAll() {
-        DataCenter.shared.deleteAll(from: ModelType.entityName)
+    static func deleteAll(cascade: Bool) {
+        DataCenter.shared.deleteAll(from: ModelType.entityName, cascade: cascade)
     }
     
     static func injectData(from source: ModelType, to destination: ModelType ) {
